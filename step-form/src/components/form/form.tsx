@@ -1,3 +1,8 @@
+import s from './styles.module.scss'
 export function Form() {
-    return <p>formulario</p>
+    return (
+        <div className={s.Container}>
+            {/* <p>formulario</p> */}
+        </div>
+    )
 }
