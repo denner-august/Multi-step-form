@@ -1,3 +1,11 @@
+import { generationNumberSteps } from './function'
+import s from './styles.module.scss'
 export function Etapas() {
-    return <p>etapas</p>
+    return (
+        <div className={s.Container}>
+           <ul className={s.Container_list}>
+               {generationNumberSteps()}
+           </ul>
+        </div>
+    )
 }
