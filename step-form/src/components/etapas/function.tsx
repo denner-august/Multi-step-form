@@ -29,7 +29,7 @@ export function generationNumberSteps() {
   return number.map(({number, msg}) => {
 
     return (
-      <li>
+      <li key={msg}>
 
        <div style={{backgroundColor: `${generationBackgrund(number)}`, color: `${generationColor(number)}` }}>
 
