@@ -1,4 +1,8 @@
+
+import {userStore} from '../../../context/zustand1'
 export function generationNumberSteps() {
+
+  const {state:{etapas}} = userStore()
 
   const number = [
     {number: 1, msg: 'Seu perfil'},
@@ -7,7 +11,7 @@ export function generationNumberSteps() {
     {number: 4, msg: 'Resumo'}
   ]
 
-  const active = 1
+  const active =  etapas
 
   function generationColor(n:number){
     if(active === n){
