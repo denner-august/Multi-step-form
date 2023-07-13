@@ -1,8 +1,8 @@
 "use client"
 import s from './styles.module.scss';
-import { userStore } from '../../../context/zustand1';
-import {Perfil} from './seu perfil/perfil'
-import { Plano } from './plano/plano';
+import { userStore } from '../../../../context/zustand1';
+import {Perfil} from '../seu perfil/perfil'
+import { Plano } from '../plano/plano';
 
 export function Form() {
     const { state:{etapas}} = userStore()
