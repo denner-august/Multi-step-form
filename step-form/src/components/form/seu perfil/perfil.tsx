@@ -1,6 +1,6 @@
 "use client"
 import { useForm } from 'react-hook-form';
-import s from '.././styles.module.scss';
+import s from './styles.module.scss';
 import { userStore } from '../../../../context/zustand1';
 
 export function Perfil() {
