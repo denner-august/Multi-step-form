@@ -3,6 +3,7 @@ import s from './styles.module.scss';
 import { userStore } from '../../../../context/zustand1';
 import {Perfil} from '../seu perfil/perfil'
 import { Plano } from '../plano/plano';
+import { Extras } from '../extras/extras';
 
 export function Form() {
     const { state:{etapas}} = userStore()
@@ -16,7 +17,7 @@ export function Form() {
            return  <Plano/>
 
         case 3:
-            return <h3>extras</h3>
+            return <Extras/>
 
         case 4:
             return <h4>resumo</h4>

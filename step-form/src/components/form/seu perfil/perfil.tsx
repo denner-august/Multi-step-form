@@ -2,6 +2,7 @@
 import { useForm } from 'react-hook-form';
 import s from './styles.module.scss';
 import { userStore } from '../../../../context/zustand1';
+import { Header } from '@/tools/header';
 
 export function Perfil() {
     const { actions:{ProximaEtapa,EtapaAnterior}} = userStore()
@@ -17,8 +18,7 @@ export function Perfil() {
         <div className={s.Container}>
 
             <div className={s.titulo}>
-                <h1>Cadastro pessoal</h1>
-                <span>Informe seu nome, email telefone.</span>
+                <Header titulo='Cadastro pessoal' subtitulo='Informe seu nome, email telefone'/>
             </div>
 
             <form onSubmit={handleSubmit(formResposta)}>

@@ -1,25 +1,23 @@
 'use client'
 import { useState } from "react";
 import { Switch, Stack } from "@chakra-ui/react";
-import { userStore } from "../../../../context/zustand1";
-
 import s from "./styles.module.scss";
 
 import { ImageComponent } from "@/tools/image";
 
 import {planos} from './planos'
+import { Header } from "@/tools/header";
+import { Button } from "@/tools/button";
 
 export function Plano() {
- const { actions:{ProximaEtapa, EtapaAnterior}} = userStore()
 
   const [state, setState] = useState(1);
   const [setOn, setOff] = useState(false);
 
   return (
     <div className={s.Container}>
-      <div>
-       <h2>Escolha seu plano</h2>
-       <span>você pode escolher pagamento mensal ou anual</span>
+      <div>     
+        <Header titulo="Escolha seu plano" subtitulo="Você pode escolher pagamento mensal ou anual"/>  
       </div>
 
       <ul>
@@ -52,10 +50,7 @@ export function Plano() {
         <span style={{color:setOn === true ? 'blue': undefined}} >Anual</span>
       </div>
 
-      <div className={s.Buttons}>
-        <button onClick={EtapaAnterior}>Voltar</button>
-        <button onClick={ProximaEtapa}>Proximo passo</button>
-      </div>
+      <Button BackButton={undefined} NextButton={undefined} render={undefined}/>
     </div>
   );
 }

@@ -1,0 +1,64 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+
+  width: 35rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  span {
+    color: rgba(0, 0, 0, 0.452);
+    font-weight: 600;
+  }
+
+  section {   
+   ul {
+
+    
+
+     list-style: none;
+     margin-bottom: 2rem;
+     li{
+      
+      display: flex;
+      align-items: center;
+
+       height: 5rem;
+       margin: 1rem 0px;
+
+       border-radius: 5px;
+       border-width: 1px;
+       border-color: black;
+       border-style: solid;
+
+       padding: 10px;
+
+       input{
+        height: 1.3rem;
+        width: 1.3rem;
+
+
+        margin-right: 1rem;
+       }
+
+       span{
+        font-size: 0.9rem;
+       }
+
+       span:nth-child(3){
+        margin-left: auto;
+
+
+       }
+
+       div{
+        display: flex;
+        flex-direction: column;
+       }
+      }
+    }
+  }
+}
