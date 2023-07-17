@@ -5,14 +5,13 @@ import { userStore } from '../../../../context/zustand1';
 import { Header } from '@/tools/header';
 
 export function Perfil() {
-    const { actions:{ProximaEtapa,EtapaAnterior}} = userStore()
+    const { actions:{ProximaEtapa}} = userStore();
 
-    const {register, handleSubmit,formState:{errors}} = useForm()
-
-    function formResposta(data:any, ){
-        console.log(data)
+    async function formResposta(data:any, ){
         ProximaEtapa()
-    }
+    };
+
+    const {register, handleSubmit,formState:{errors}} = useForm();
 
     return (
         <div className={s.Container}>
@@ -23,13 +22,13 @@ export function Perfil() {
 
             <form onSubmit={handleSubmit(formResposta)}>
                 <span>Nome</span>
-                <input type="text" placeholder='Digite seu nome' {...register('nome')} />
+                <input alt='nome' type="text" placeholder='Digite seu nome' {...register('nome')}/>
 
                 <span>Email</span>
-                <input type="email" placeholder='Digite seu Email' {...register('email')} />
+                <input alt='email' type="email" placeholder='Digite seu Email' {...register('email')}  />
 
                 <span>Telefone</span>
-                <input type="number" placeholder='Digite seu telefone' {...register('telefone')} />
+                <input alt='telefone' type="number" placeholder='Digite seu telefone' {...register('telefone')} />
 
                 <button type="submit">proximo</button>
             </form>
