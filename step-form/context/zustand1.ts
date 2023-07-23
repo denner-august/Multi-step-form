@@ -18,7 +18,6 @@ interface stateProps {
 export  const userStore = create<stateProps>((set)=> ({
  state:{
   etapas:1,
-
  },
 
  actions:{
