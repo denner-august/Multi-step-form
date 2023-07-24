@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Switch, Stack } from "@chakra-ui/react";
 import s from "./styles.module.scss";
+import { usePlanContext } from "../../../../context/ContextPlano";
 
 import { ImageComponent } from "@/tools/image";
 
@@ -9,10 +10,21 @@ import {planos} from './planos'
 import { Header } from "@/tools/header";
 import { Button } from "@/tools/button";
 
+import{useStore} from 'zustand'
+
 export function Plano() {
+  const {actions:{adicionarPlanoNome, adicionarPlanoValue}} = useStore(usePlanContext)
+
 
   const [state, setState] = useState(1);
   const [setOn, setOff] = useState(false);
+
+  function planoAtual(id:number){
+   
+    adicionarPlanoNome(planos[id -1].nome),
+    setOn ? adicionarPlanoValue(planos[id -1].anual) : adicionarPlanoValue(planos[id -1].mensal)
+    setState(id)
+  }
 
   return (
     <div className={s.Container}>
@@ -28,7 +40,7 @@ export function Plano() {
               style={{
                 borderColor: state === id ? " rgb(95, 79, 167)" : undefined,
               }}
-              onClick={() => setState(id)}
+              onClick={() => planoAtual(id)}
             >
               <ImageComponent imagem={imagem} width={width} height={height} alt={alt}/>
               
