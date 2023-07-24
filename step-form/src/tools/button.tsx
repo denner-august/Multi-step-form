@@ -13,7 +13,7 @@ export function Button({render=true, BackButton="Voltar", NextButton="Proximo pa
  return (
   <div className={s.Buttons}>
   {render === true ?  <button onClick={EtapaAnterior}>{BackButton}</button> : null }
-  <button  onClick={ProximaEtapa}>{NextButton}</button>
+  <button  onClick={ProximaEtapa} type='submit'>{NextButton}</button>
 </div>
  )
 }
