@@ -7,28 +7,47 @@ import { useForm } from "react-hook-form";
 import { userStore } from "../../../../context/zustand1";
 import { useState } from "react";
 
+import { ExtrasContext } from "../../../../context/extrasForm";
+
 export function Extras() {
   const { actions:{ProximaEtapa, EtapaAnterior}} = userStore()
+  const { actions:{adicionarExtras}} = ExtrasContext()
 
   const { register, handleSubmit } = useForm();
 
   const [FormChoice, setFormChoice] = useState("")
 
-  function extras(e:any){
-    console.log(e);    
+  async function extras(e:any){  
+
+    if(e.uncontrolled === false){
+      caminho()
+      return
+    }
+    
+
+    let organiza = e.uncontrolled.map((item:any) => {
+      return {nome:item.split(',')[0], value:item.split(',')[1]}
+    })
+    
+    adicionarExtras(organiza)    
+
+    caminho()
+  }
+
+  function caminho(){
     if(FormChoice === "avançar"){
       return ProximaEtapa()
     }
 
     return EtapaAnterior()
-    
   }
 
-  const planos = {
-    a: 4.8,
-    b: 9.6,
-    c: 9.6,
-  };
+
+  const planos = [
+    {nome:"Jogar online", value: 4.8},
+    {nome:"Espaço extra", value: 9.6},
+    {nome:"Costumizar perfil", value:9.6}
+  ]
 
   return (
     <form onSubmit={handleSubmit(extras)} >
@@ -41,7 +60,7 @@ export function Extras() {
         <section>
           <ul>
             <li>
-              <input {...register("uncontrolled")} type="checkbox" value={planos.a} />
+              <input {...register("uncontrolled")} type="checkbox" value={[planos[0].nome, `${planos[0].value}`]} />
 
               <div>
                 <span>Jogar online</span>
@@ -49,7 +68,7 @@ export function Extras() {
               </div>
 
               <span>
-                {planos.a.toLocaleString("pt-br", {
+                {planos[0].value.toLocaleString("pt-br", {
                   style: "currency",
                   currency: "BRL",
                 })}
@@ -57,14 +76,14 @@ export function Extras() {
               </span>
             </li>
             <li>
-              <input {...register("uncontrolled")} type="checkbox" value={planos.b} />
+              <input {...register("uncontrolled")} type="checkbox" value={[planos[1].nome, `${planos[1].value}`]} />
 
               <div>
                 <span>Grande espaço</span>
                 <span>Espaço extra de 1tb na cloud</span>
               </div>
               <span>
-                {planos.b.toLocaleString("pt-br", {
+                {planos[1].value.toLocaleString("pt-br", {
                   style: "currency",
                   currency: "BRL",
                 })}
@@ -72,14 +91,14 @@ export function Extras() {
               </span>
             </li>
             <li>
-              <input {...register("uncontrolled")} type="checkbox" value={planos.c} />
+              <input {...register("uncontrolled")} type="checkbox" value={[ planos[2].nome , `${planos[2].value}`]} />
 
               <div>
                 <span>Costumize seu perfil</span>
                 <span>Costumize o tema do seu perfil</span>
               </div>
               <span>
-                {planos.c.toLocaleString("pt-br", {
+                {planos[2].value.toLocaleString("pt-br", {
                   style: "currency",
                   currency: "BRL",
                 })}
