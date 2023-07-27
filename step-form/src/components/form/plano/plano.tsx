@@ -14,19 +14,28 @@ import{useStore} from 'zustand'
 import { userStore } from "../../../../context/zustand1";
 
 export function Plano() {
-  const {actions:{adicionarPlanoNome, adicionarPlanoValue}} = useStore(usePlanContext)
+  const {actions:{adicionarPlanoNome}} = useStore(usePlanContext)
   const { actions:{ProximaEtapa, EtapaAnterior}} = userStore()
-
-
 
   const [state, setState] = useState(1);
   const [setOn, setOff] = useState(false);
 
-  function planoAtual(id:number){
-   
-    adicionarPlanoNome(planos[id -1].nome),
-    setOn ? adicionarPlanoValue(planos[id -1].anual) : adicionarPlanoValue(planos[id -1].mensal)
+  function planoAtual(id:number, choice?:string){
+
+    const nome = setOn === false ? `${planos[id -1].nome} (Mensal)` : `${planos[id -1].nome} (Anual)`
+    const valor = setOn === false ? planos[id -1].mensal : planos[id -1].anual
+
+    adicionarPlanoNome(nome, valor)
     setState(id)
+
+    if(choice === 'avançar'){
+      ProximaEtapa()
+       
+    }
+
+    if(choice === 'voltar'){
+      EtapaAnterior()
+    }
   }
 
   return (
@@ -66,8 +75,8 @@ export function Plano() {
       </div>
 
       <Button >
-              <button onClick={EtapaAnterior}>Voltar</button>
-              <button  onClick={ProximaEtapa} type='submit'>Proxima etapa</button>
+              <button onClick={()=> planoAtual(state, 'voltar')}>Voltar</button>
+              <button  onClick={()=> planoAtual(state, 'avançar')} type='submit'>Proxima etapa</button>
       </Button>
     </div>
   );
