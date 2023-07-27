@@ -21,7 +21,7 @@ export  const userStore = create<stateProps>((set)=> ({
  },
 
  actions:{
-  ProximaEtapa: () => set((state) => ({ state: { etapas: state.state.etapas + 1} })),
+  ProximaEtapa: () => set((state) => ({ state: { etapas: state.state.etapas >= 4 ? state.state.etapas : state.state.etapas + 1} })),
   EtapaAnterior: () => set((state) => ({state: {etapas: state.state.etapas - 1}}))
  }
 }))
