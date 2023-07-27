@@ -11,9 +11,12 @@ import { Header } from "@/tools/header";
 import { Button } from "@/tools/button";
 
 import{useStore} from 'zustand'
+import { userStore } from "../../../../context/zustand1";
 
 export function Plano() {
   const {actions:{adicionarPlanoNome, adicionarPlanoValue}} = useStore(usePlanContext)
+  const { actions:{ProximaEtapa, EtapaAnterior}} = userStore()
+
 
 
   const [state, setState] = useState(1);
@@ -62,7 +65,10 @@ export function Plano() {
         <span style={{color:setOn === true ? 'blue': undefined}} >Anual</span>
       </div>
 
-      <Button BackButton={undefined} NextButton={undefined} render={undefined}/>
+      <Button >
+              <button onClick={EtapaAnterior}>Voltar</button>
+              <button  onClick={ProximaEtapa} type='submit'>Proxima etapa</button>
+      </Button>
     </div>
   );
 }
