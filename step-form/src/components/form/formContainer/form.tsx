@@ -4,6 +4,7 @@ import { userStore } from '../../../../context/zustand1';
 import {Perfil} from '../seu perfil/perfil'
 import { Plano } from '../plano/plano';
 import { Extras } from '../extras/extras';
+import { Resumo } from '../resumo/resumo';
 
 export function Form() {
     const { state:{etapas}} = userStore()
@@ -20,7 +21,7 @@ export function Form() {
             return <Extras/>
 
         case 4:
-            return <h4>resumo</h4>
+            return <Resumo/>
             
         default:
             return
