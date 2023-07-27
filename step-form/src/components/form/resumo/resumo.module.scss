@@ -1,0 +1,20 @@
+.Container{
+ width: 100%;
+
+ 
+ .resumo{
+  height: auto;
+  background-color: red;
+  padding: 1rem;
+ }
+
+ .plano{
+  display: flex;
+  justify-content: space-between;
+
+  button{
+   cursor: pointer;
+   color: rgba(0, 0, 255, 0.76);
+  }
+ }
+}
