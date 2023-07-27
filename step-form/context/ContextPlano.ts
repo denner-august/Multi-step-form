@@ -2,13 +2,13 @@
 import {create } from 'zustand'
 
 export interface  etapaProps {
- planoNome?:string
- PlanoValue?:string
+ planoForm:{planoNome:string, planoValue:string}
 }
 
+// planoNome?:string
+// PlanoValue?:string
 interface actionsProps {
- adicionarPlanoNome: (nome:string) => void
- adicionarPlanoValue: (value:string) => void
+ adicionarPlanoNome: (nome:string, value:string) => void
 }
 
 interface stateProps {
@@ -18,12 +18,11 @@ interface stateProps {
 
 export const usePlanContext = create<stateProps>((set)=> ({
  state:{
-  planoNome:"",
-  PlanoValue:""
+  planoForm:{planoNome:"", planoValue:""},
+
  },
 
  actions:{
-  adicionarPlanoNome: (nome) => set(() => ({ state: { planoNome: nome }})),
-  adicionarPlanoValue: (value) => set(() => ({ state: { PlanoValue: value }}))
+  adicionarPlanoNome: (nome, value) => set(() => ({ state: {planoForm:{planoNome:nome , planoValue:value}}})),
  }
 }))
