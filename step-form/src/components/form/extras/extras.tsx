@@ -4,11 +4,25 @@ import { Header } from "@/tools/header";
 import { Button } from "@/tools/button";
 
 import { useForm } from "react-hook-form";
+import { userStore } from "../../../../context/zustand1";
+import { useState } from "react";
 
 export function Extras() {
+  const { actions:{ProximaEtapa, EtapaAnterior}} = userStore()
+
   const { register, handleSubmit } = useForm();
 
-  const e = (data: any) => console.log(data);
+  const [FormChoice, setFormChoice] = useState("")
+
+  function extras(e:any){
+    console.log(e);    
+    if(FormChoice === "avançar"){
+      return ProximaEtapa()
+    }
+
+    return EtapaAnterior()
+    
+  }
 
   const planos = {
     a: 4.8,
@@ -17,7 +31,7 @@ export function Extras() {
   };
 
   return (
-    <form onSubmit={handleSubmit(e)}>
+    <form onSubmit={handleSubmit(extras)} >
       <div className={s.Container}>
         <Header
           titulo="Melhore sua experiência"
@@ -27,7 +41,7 @@ export function Extras() {
         <section>
           <ul>
             <li>
-              <input {...register("uncontrolled")} type="checkbox" value="A" />
+              <input {...register("uncontrolled")} type="checkbox" value={planos.a} />
 
               <div>
                 <span>Jogar online</span>
@@ -43,7 +57,7 @@ export function Extras() {
               </span>
             </li>
             <li>
-              <input {...register("uncontrolled")} type="checkbox" value="B" />
+              <input {...register("uncontrolled")} type="checkbox" value={planos.b} />
 
               <div>
                 <span>Grande espaço</span>
@@ -58,7 +72,7 @@ export function Extras() {
               </span>
             </li>
             <li>
-              <input {...register("uncontrolled")} type="checkbox" value="C" />
+              <input {...register("uncontrolled")} type="checkbox" value={planos.c} />
 
               <div>
                 <span>Costumize seu perfil</span>
@@ -75,7 +89,11 @@ export function Extras() {
           </ul>
         </section>
 
-        <Button BackButton={undefined} NextButton={undefined} render={true} />
+        <Button>
+              <button type="submit" onClick={()=> setFormChoice("voltar")}>Voltar</button>
+              <button type="submit" onClick={()=> setFormChoice("avançar")}>Proxima etapa</button>
+        </Button>
+         
       </div>
     </form>
   );
