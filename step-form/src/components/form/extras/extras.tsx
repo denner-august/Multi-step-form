@@ -20,6 +20,7 @@ export function Extras() {
   async function extras(e:any){  
 
     if(e.uncontrolled === false){
+      adicionarExtras([])
       caminho()
       return
     }
