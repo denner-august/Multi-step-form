@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react'
+import {  ReactNode } from 'react'
 import s from './styleTools/button.module.scss'
 
 interface buttonProps{
