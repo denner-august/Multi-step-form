@@ -1,11 +1,11 @@
-.Container{
-    height: 100%;
-    width: 70%;
-    border-radius: 10px;
-    
-    display: flex;
-    flex-direction: column;
+.Container {
+  height: 100%;
+  width: 70%;
 
-    justify-content: space-evenly;
-    align-items: center;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }

@@ -1,56 +1,48 @@
-.Container{
-    background-color: blue;
-    height: 100%;
-    min-width: 15rem;
-    margin-right: 2rem;
+.Container {
+  height: 100%;
+  min-width: 15rem;
+  margin-right: 2rem;
 
-    border-radius: 10px;
+  background-color: blue;
+  color: white;
 
-    background-image: url('../../../public/images/bg-sidebar-desktop.svg') ;
-    background-repeat: no-repeat;
+  border-radius: 10px;
+  padding-top: 5%;
 
-    display: flex;
-    
-    padding-top: 5%;
-
-    color: white;
+  display: flex;
 }
 
-.Container_list{
-    width: 100%;
+.Container_list {
+  display: flex;
+  flex-direction: column;
 
-   display: flex;
-   flex-direction: column;
-    padding-left: 1rem;
+  width: 100%;
 
-    li{
-        width: auto;
-        padding: 10px;
-        display: flex;
+  padding-left: 1rem;
 
-        margin: 1rem 0px;
+  li {
+    width: auto;
+
+    padding: 10px;
+    margin: 1rem 0px;
+
+    display: flex;
+  }
+
+  li {
+    div:first-child {
+      height: 40px;
+      width: 40px;
+      margin-right: 1rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: transparent;
+
+      border: 1px solid white;
+      border-radius: 100%;
     }
-
-    li{
-        div:first-child{
-
-            height: 40px;
-            width: 40px;
-            margin-right: 1rem;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background-color:transparent;
-
-            border: 1px solid white;
-            border-radius: 100%;
-
-           
-        
-        }
-    }
-    
-
+  }
 }

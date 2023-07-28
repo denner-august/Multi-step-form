@@ -18,11 +18,10 @@ interface stateProps {
 export  const userStore = create<stateProps>((set)=> ({
  state:{
   etapas:1,
-
  },
 
  actions:{
-  ProximaEtapa: () => set((state) => ({ state: { etapas: state.state.etapas + 1} })),
+  ProximaEtapa: () => set((state) => ({ state: { etapas: state.state.etapas >= 5 ? state.state.etapas : state.state.etapas + 1} })),
   EtapaAnterior: () => set((state) => ({state: {etapas: state.state.etapas - 1}}))
  }
 }))

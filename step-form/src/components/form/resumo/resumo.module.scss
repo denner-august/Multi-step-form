@@ -1,0 +1,41 @@
+.Container{
+ height: 100vh;
+ width: 100%;
+
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+
+
+ 
+ .resumo{
+  height: auto;
+  background-color: rgba(196, 196, 196, 0.26);
+  padding: 1rem;
+  border-radius: 1rem;
+ }
+
+ .plano{
+  display: flex;
+  justify-content: space-between;
+
+  button{
+   cursor: pointer;
+   color: rgba(0, 0, 255, 0.76);
+  }
+ }
+
+ .pagamento{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+
+  margin: 1rem 1rem;
+
+ }
+
+ .pagamento > span:nth-child(2){
+  color: rgb(0, 81, 255);
+  font-size: 1.5rem;
+ }
+}
