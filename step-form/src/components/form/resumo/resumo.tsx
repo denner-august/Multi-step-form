@@ -6,6 +6,7 @@ import { useStore } from "zustand";
 import { userStore } from "../../../../context/zustand1";
 import { usePlanContext } from "../../../../context/ContextPlano";
 import { ExtrasContext } from "../../../../context/extrasForm";
+import { formataDinheiro } from "../plano/planos";
 
 export function Resumo() {
   const {
@@ -20,23 +21,31 @@ export function Resumo() {
   const {state:{ExtrasPlano}} = useStore(ExtrasContext)
 
   function TotalAnual(){
-    // const total = Number(planoValue)
+   
+    const planoCalc = ExtrasPlano?.reduce((preve, next) => preve + Number(next.value),0 )
+
+    let TotalPlan = Number(planoCalc) + planoValue
+    
+    return formataDinheiro(Number(TotalPlan))
 
   }
 
   return (
     <div className={s.Container}>
-      <Header
+     
+     <div>
+     <Header
         titulo="Finalizando Cadastro"
         subtitulo="Verifique se todas informações estão corretas"
       />
+     </div>
 
       <div className={s.resumo}>
         <p>{planoNome}</p>
 
         <div className={s.plano}>
           <button>Mudar</button>
-          <p>{planoValue}</p>
+          <p>{formataDinheiro(planoValue)}</p>
         </div>
 
         <hr />
@@ -44,19 +53,23 @@ export function Resumo() {
             return (
               <div className={s.plano} key={item.nome}>
                 <p>{item.nome}</p>
-                <p>{item.value}</p>
+                <p>{formataDinheiro(Number(item.value))}</p>
               
               </div>
             )
           })}
       </div>
-          <span>total por ano  </span>
+          
+      <div className={s.pagamento}>
+        <span>total por ano   </span>
+        <span>{TotalAnual()}</span>
+      </div>
 
       <Button>
         <button onClick={EtapaAnterior} type="submit">
           voltar
         </button>
-        <button type="submit">Confirmar</button>
+        <button onClick={ProximaEtapa} type="submit">Confirmar</button>
       </Button>
     </div>
   );
