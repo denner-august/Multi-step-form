@@ -5,6 +5,7 @@ import {Perfil} from '../seu perfil/perfil'
 import { Plano } from '../plano/plano';
 import { Extras } from '../extras/extras';
 import { Resumo } from '../resumo/resumo';
+import { Obrigado } from '../agradecimentos/agradecer';
 
 export function Form() {
     const { state:{etapas}} = userStore()
@@ -22,6 +23,9 @@ export function Form() {
 
         case 4:
             return <Resumo/>
+
+        case 5:
+            return <Obrigado/>
             
         default:
             return
