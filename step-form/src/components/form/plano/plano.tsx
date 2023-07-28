@@ -6,7 +6,7 @@ import { usePlanContext } from "../../../../context/ContextPlano";
 
 import { ImageComponent } from "@/tools/image";
 
-import {planos} from './planos'
+import {formataDinheiro, planos} from './planos'
 import { Header } from "@/tools/header";
 import { Button } from "@/tools/button";
 
@@ -58,7 +58,7 @@ export function Plano() {
               
                 <div>
                   {nome}
-                  <span>{setOn === false ? mensal : anual }</span>
+                  <span>{setOn === false ? formataDinheiro(mensal) : formataDinheiro(anual) }</span>
                   <span>{setOn === true ? 'dois meses gratis' : null }</span>
                 </div>
             </li>
