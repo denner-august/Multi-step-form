@@ -8,5 +8,14 @@ interface imageProps {
 }
 
 export function ImageComponent({ imagem, height, width, alt }: imageProps) {
-  return <Image src={imagem} width={width} height={height} alt={alt} />;
+  return (
+    <Image
+      blurDataURL={String(imagem)}
+      priority={true}
+      src={imagem}
+      width={width}
+      height={height}
+      alt={alt}
+    />
+  );
 }
